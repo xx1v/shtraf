@@ -14,22 +14,51 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #ff3b30;
-      font-size: 7vw;
       font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
-      transition: all 0.3s ease;
+      overflow: hidden;
     }
 
-    body:hover {
+    .text-container {
+      position: relative;
+      font-size: 7vw;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #ff3b30;
+      transition: all 0.3s ease;
+      text-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+    }
+
+    .text-container::before,
+    .text-container::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40vw;
+      height: 120%;
+      background: radial-gradient(ellipse at center, rgba(255, 59, 48, 0.2) 0%, transparent 80%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .text-container::before {
+      left: -45vw;
+    }
+
+    .text-container::after {
+      right: -45vw;
+    }
+
+    .text-container:hover {
       color: #ff1f0f;
-      text-shadow: 0 4px 20px rgba(255, 59, 48, 0.5);
+      text-shadow:
+        0 0 20px rgba(255, 59, 48, 0.8),
+        0 0 40px rgba(255, 59, 48, 0.6),
+        0 0 60px rgba(255, 59, 48, 0.4);
     }
   </style>
 </head>
 <body>
-  ШТРАФ
+  <div class="text-container">ШТРАФ</div>
 </body>
 </html>
